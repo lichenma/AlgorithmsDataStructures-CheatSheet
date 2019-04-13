@@ -640,12 +640,19 @@ Fn = ((sqrt(5)+1)/2)^n)sqrt(5)
 
 
 <br><br><br> 
-***
+---
 <a name="sorting"></a>
-## Sorting 
+# Sorting 
 
 
-### 
+## Introduction 
+
+Sorting is ordering a list of objects. We can distinguish two types of sorting. IF the number of 
+objects is small enough to fit into the main memory, the sorting is called *internal sorting*. If the 
+number of objects is so large that some of them reside on external storage during the sort, it is 
+called *external sorting*. In this exploration we will cover the following sorting algorithms. 
+
+
 
 
 
