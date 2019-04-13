@@ -59,7 +59,6 @@ Chrome Version 71.0.3578.98
 
 <br><br><br>
 ---
-<br><br><br>
 
 <a name="trie"></a>
 # Trie 
