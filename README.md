@@ -54,11 +54,11 @@ Chrome Version 71.0.3578.98
     * [Merge Sort](#sortingMergeSort)
 
 
-
+<br><br>
 # Data Structures 
 
-<br><br><br><br><br>
-***
+<br><br><br>
+---
 <br><br><br>
 
 <a name="trie"></a>
