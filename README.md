@@ -38,13 +38,24 @@ Chrome Version 71.0.3578.98
 * **content belongs to respective creators**
 
 
-### Algorithms and Data Structures 
-* [Trie](#trie)
-* [Dynamic Programming](#dynamicProgramming)
-    1. [Fibonacci Numbers](#dynamicProgrammingFibonacciNumbers)
+### Data Structures 
+1. [Trie](#trie)
+
+
+### Algorithms 
+1. [Dynamic Programming](#dynamicProgramming)
+    * [Fibonacci Numbers](#dynamicProgrammingFibonacciNumbers)
+2. [Sorting](#sorting)
+    * [Bucket Sort](#sortingBucketSort)
+    * [Bubble Sort](#sortingBubbleSort)
+    * [Insertion Sort](#sortingInsertionSort)
+    * [Selection Sort](#sortingSelectionSort)
+    * [Heap Sort](#sortingHeapSort)
+    * [Merge Sort](#sortingMergeSort)
 
 
 
+# Data Structures 
 
 <br><br><br><br><br>
 ***
@@ -447,6 +458,9 @@ class Trie {
 
 
 
+<br><br><br> 
+
+# Algorithms 
 
 <br><br><br>
 ***
@@ -620,6 +634,25 @@ method which uses the Fibonacci mathematical equation.
 ```
 Fn = ((sqrt(5)+1)/2)^n)sqrt(5)
 ```
+
+
+
+
+
+
+<br><br><br> 
+***
+<a name="sorting"></a>
+## Sorting 
+
+
+### 
+
+
+
+
+
+
 
 
 
