@@ -652,6 +652,27 @@ objects is small enough to fit into the main memory, the sorting is called *inte
 number of objects is so large that some of them reside on external storage during the sort, it is 
 called *external sorting*. In this exploration we will cover the following sorting algorithms. 
 
+* Bucket Sort 
+* Bubble Sort 
+* Insertion Sort 
+* Selection Sort 
+* HeapSort 
+* MergeSort 
+
+
+
+
+<br><br> 
+## O(n) Algorithms
+
+
+<br>
+### Bucket Sort 
+
+Suppose we need to sort an array of positive integers {3, 11, 2, 9, 1, 5}. A bucket sort works as 
+follows: create an array of size 11. Then go through the input array and place integer 3 into a second
+array at index 3, integer 11 at index 11 and so on. We will end up with a sorted list in the second 
+array. 
 
 
 
