@@ -85,7 +85,7 @@ subproblems just once and storing their solutions using a memory-based data stru
 ## Fibonacci Numbers 
 
 <br><br>
-### Approach 1: Recursion**
+### Approach 1: Recursion
 
 ```java 
 class fibonacci {
@@ -284,7 +284,34 @@ array.
 <a name="comparator"></a>
 # Comparator 
 
+Java provides a `Comparator` interface and we can pass it to sorting functions like `Collections.sort` or `Arrays.sort` to sort the objects based on the ordering defined by the `Comparator`. 
 
+
+The `Comparator` interface contains a method called `compare()` that you need to implement in order to define the ordering of the objects of a class: 
+
+```Java 
+public interface Comparator<T> {
+	int compare(T o1, T o2); 
+}
+```
+
+The **implementation of the `compare()` method** should return 
+* a **negative integer, if the first argument if less than the second**, 
+* **zero, if the first argument is equal to the second** 
+* a **positive integer, if the first argument is greater than the second** 
+
+## Example 
+
+```Java 
+
+Comparator<int[]> cmp = new Comparator<int[]>(){
+	public int compare(int[] b, int[] a){
+		if (a[0]*a[0]+a[1]*a[1]>b[0]*b[0]+b[1]*b[1]){
+			return 1; 
+		}
+	}
+	
+}
 
 
 
