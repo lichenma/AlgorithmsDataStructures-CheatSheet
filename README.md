@@ -302,17 +302,23 @@ The **implementation of the `compare()` method** should return
 
 ## Example 
 
+This is an example of a problem where we want to track the **K Closest Points to the Origin**, in this case we create a Max Heap so we always have access to the largest value. When the heap size exceeds K, then we want to pop the top of the PriorityQueue since that is the largest value - this allows us to always keep track of the K smallest values. 
+
 ```Java 
 
 Comparator<int[]> cmp = new Comparator<int[]>(){
 	public int compare(int[] b, int[] a){
 		if (a[0]*a[0]+a[1]*a[1]>b[0]*b[0]+b[1]*b[1]){
 			return 1; 
+		} else if (a[0]*a[0]+a[1]*a[1]==b[0]*b[0]+b[1]*b[1]){
+			return 0; 
+		} else {
+			return -1; 
 		}
 	}
 	
-}
-
+};
+```
 
 
 <br><br>
