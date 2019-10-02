@@ -38,10 +38,6 @@ Chrome Version 71.0.3578.98
 * **content belongs to respective creators**
 
 
-### Data Structures 
-1. [Trie](#trie)
-
-
 ### Algorithms 
 1. [Dynamic Programming](#dynamicProgramming)
     * [Fibonacci Numbers](#dynamicProgrammingFibonacciNumbers)
@@ -52,6 +48,244 @@ Chrome Version 71.0.3578.98
     * [Selection Sort](#sortingSelectionSort)
     * [Heap Sort](#sortingHeapSort)
     * [Merge Sort](#sortingMergeSort)
+3. [Comparator](#comparator)
+
+
+
+
+### Data Structures 
+1. [Trie](#trie)
+
+
+
+# Algorithms 
+
+<br><br><br>
+***
+<a name="dynamicProgramming"></a>
+# Dynamic Programming 
+
+
+Dynamic Programming is mainly an optimization over plain recursion. Whenever we see a recursive 
+solution that has repeated calls for the same inputs we can optimize it using Dynamic Programming. The
+idea is to simply store the results of the subproblems so that we do not have to re-compute them when
+needed later. This simple optimization reduces time complexities from exponential to polynomial. For 
+example, if we write the simple recursive solution for Fibonacci numbers, we get exponential time 
+complexity and if we optimize it by storing solutions of subproblems time complexity reduces to linear.
+
+We break a complex problem up into a collection of simpler subproblems and solve each of those 
+subproblems just once and storing their solutions using a memory-based data structure. 
+
+
+
+
+
+<br><br>
+<a name="dynamicProgrammingFibonacciNumbers"></a>
+## Fibonacci Numbers 
+
+<br><br>
+### Approach 1: Recursion**
+
+```java 
+class fibonacci {
+	static int fib(int n) {
+		if (n<=1){
+			return n;
+		}
+		return fib(n-1) + fib(n-2);
+	}
+
+	public static void main(String args[]) {
+		int n=9; 
+		System.out.println(fib(n));
+	}
+}
+```
+
+Output : 34
+
+
+**Complexity Analysis** 
+
+```
+Time Complexity:	exponential	T(n) = T(n-1) + T(n-2) which is exponential 
+
+Space Complexity: 	O(n) 		if we consider the function call stack size, otherwise O(1)
+```
+
+<br><br>
+
+We can observe that this implementation does a lot of repeated work. This is a bad implementation for 
+the nth Fibonacci number. 
+
+```
+
+		       	   fib(5)
+
+                     /                \
+               fib(4)                fib(3)   
+             /        \              /       \ 
+         fib(3)      fib(2)         fib(2)   fib(1)
+        /    \       /    \        /      \
+  fib(2)   fib(1)  fib(1) fib(0) fib(1) fib(0)
+  /     \
+fib(1) fib(0)
+```
+
+
+<br><br> 
+### Approach 2: Dynamic Programming 
+
+```java 
+class fibonacci {
+	
+	static int fib(int n) {
+		
+		// Declare an array to store Fibonacci numbers 
+		int f[] = new int[n+2]; 	// 1 extra to handle case, n = 0 
+		int i; 
+
+		//0th and 1st number of the series are 0 and 1 
+		f[0] = 0;
+		f[1] = 1;
+
+		for (i=2; i<=n; i++) {
+			
+			//add the previous two numbers in the series and store it
+			f[i] = f[i-1] + f[i-2];
+		}
+
+		return f[n];
+	}
+
+	public static void main(String args[]) {
+		
+		int n=9; 
+		System.out.println(fib(n));
+	}
+}
+```
+
+**Complexity Analysis**
+
+```
+Time Complexity: 	O(n)
+Space Complexity: 	O(n)
+```
+
+
+
+
+
+<br><br> 
+### Approach 3: Space Optimized Dynamic Programming 
+
+
+We can optimize the space used in the above method by storing only the previous two numbers because
+that is all we need to the get the next Fibonacci Number in Series
+
+
+```java 
+class fibonacci {
+	
+	static int fib(int n) {
+		
+		int a=0, b=1, c;
+
+		if (n==0) {
+			return a; 
+		}
+
+		for (int i=2; i<=n; i++) {
+			c=a+b;
+			a=b;
+			b=c;
+		}
+		return b;
+	}
+
+	public static void main(String args[]) {
+		
+		int n=0;
+		System.out.println(fib(n));
+	}
+}
+```
+
+
+**Complexity Analysis** 
+
+```
+Time Complexity: 	O(n) 
+Space Complexity: 	O(1) 
+```
+
+
+
+<br><br> 
+### Further Exploration 
+
+There is also a O(logn) runtime method of implementing fibonacci using matrices and also a O(1) runtime
+method which uses the Fibonacci mathematical equation. 
+
+```
+Fn = ((sqrt(5)+1)/2)^n)sqrt(5)
+```
+
+
+
+
+
+
+<br><br><br> 
+---
+<a name="sorting"></a>
+# Sorting 
+
+
+## Introduction 
+
+Sorting is ordering a list of objects. We can distinguish two types of sorting. IF the number of 
+objects is small enough to fit into the main memory, the sorting is called *internal sorting*. If the 
+number of objects is so large that some of them reside on external storage during the sort, it is 
+called *external sorting*. In this exploration we will cover the following sorting algorithms. 
+
+* Bucket Sort 
+* Bubble Sort 
+* Insertion Sort 
+* Selection Sort 
+* HeapSort 
+* MergeSort 
+
+
+
+
+<br><br> 
+## O(n) Algorithms
+
+
+<br>
+
+### Bucket Sort 
+
+Suppose we need to sort an array of positive integers {3, 11, 2, 9, 1, 5}. A bucket sort works as 
+follows: create an array of size 11. Then go through the input array and place integer 3 into a second
+array at index 3, integer 11 at index 11 and so on. We will end up with a sorted list in the second 
+array. 
+
+
+
+
+
+
+<br><br><br> 
+---
+<a name="comparator"></a>
+# Comparator 
+
+
+
 
 
 <br><br>
@@ -458,222 +692,6 @@ class Trie {
 
 
 <br><br><br> 
-
-# Algorithms 
-
-<br><br><br>
-***
-<a name="dynamicProgramming"></a>
-# Dynamic Programming 
-
-
-Dynamic Programming is mainly an optimization over plain recursion. Whenever we see a recursive 
-solution that has repeated calls for the same inputs we can optimize it using Dynamic Programming. The
-idea is to simply store the results of the subproblems so that we do not have to re-compute them when
-needed later. This simple optimization reduces time complexities from exponential to polynomial. For 
-example, if we write the simple recursive solution for Fibonacci numbers, we get exponential time 
-complexity and if we optimize it by storing solutions of subproblems time complexity reduces to linear.
-
-We break a complex problem up into a collection of simpler subproblems and solve each of those 
-subproblems just once and storing their solutions using a memory-based data structure. 
-
-
-
-
-
-<br><br>
-<a name="dynamicProgrammingFibonacciNumbers"></a>
-## Fibonacci Numbers 
-
-<br><br>
-### Approach 1: Recursion**
-
-```java 
-class fibonacci {
-	static int fib(int n) {
-		if (n<=1){
-			return n;
-		}
-		return fib(n-1) + fib(n-2);
-	}
-
-	public static void main(String args[]) {
-		int n=9; 
-		System.out.println(fib(n));
-	}
-}
-```
-
-Output : 34
-
-
-**Complexity Analysis** 
-
-```
-Time Complexity:	exponential	T(n) = T(n-1) + T(n-2) which is exponential 
-
-Space Complexity: 	O(n) 		if we consider the function call stack size, otherwise O(1)
-```
-
-<br><br>
-
-We can observe that this implementation does a lot of repeated work. This is a bad implementation for 
-the nth Fibonacci number. 
-
-```
-
-		       	   fib(5)
-
-                     /                \
-               fib(4)                fib(3)   
-             /        \              /       \ 
-         fib(3)      fib(2)         fib(2)   fib(1)
-        /    \       /    \        /      \
-  fib(2)   fib(1)  fib(1) fib(0) fib(1) fib(0)
-  /     \
-fib(1) fib(0)
-```
-
-
-<br><br> 
-### Approach 2: Dynamic Programming 
-
-```java 
-class fibonacci {
-	
-	static int fib(int n) {
-		
-		// Declare an array to store Fibonacci numbers 
-		int f[] = new int[n+2]; 	// 1 extra to handle case, n = 0 
-		int i; 
-
-		//0th and 1st number of the series are 0 and 1 
-		f[0] = 0;
-		f[1] = 1;
-
-		for (i=2; i<=n; i++) {
-			
-			//add the previous two numbers in the series and store it
-			f[i] = f[i-1] + f[i-2];
-		}
-
-		return f[n];
-	}
-
-	public static void main(String args[]) {
-		
-		int n=9; 
-		System.out.println(fib(n));
-	}
-}
-```
-
-**Complexity Analysis**
-
-```
-Time Complexity: 	O(n)
-Space Complexity: 	O(n)
-```
-
-
-
-
-
-<br><br> 
-### Approach 3: Space Optimized Dynamic Programming 
-
-
-We can optimize the space used in the above method by storing only the previous two numbers because
-that is all we need to the get the next Fibonacci Number in Series
-
-
-```java 
-class fibonacci {
-	
-	static int fib(int n) {
-		
-		int a=0, b=1, c;
-
-		if (n==0) {
-			return a; 
-		}
-
-		for (int i=2; i<=n; i++) {
-			c=a+b;
-			a=b;
-			b=c;
-		}
-		return b;
-	}
-
-	public static void main(String args[]) {
-		
-		int n=0;
-		System.out.println(fib(n));
-	}
-}
-```
-
-
-**Complexity Analysis** 
-
-```
-Time Complexity: 	O(n) 
-Space Complexity: 	O(1) 
-```
-
-
-
-<br><br> 
-### Further Exploration 
-
-There is also a O(logn) runtime method of implementing fibonacci using matrices and also a O(1) runtime
-method which uses the Fibonacci mathematical equation. 
-
-```
-Fn = ((sqrt(5)+1)/2)^n)sqrt(5)
-```
-
-
-
-
-
-
-<br><br><br> 
----
-<a name="sorting"></a>
-# Sorting 
-
-
-## Introduction 
-
-Sorting is ordering a list of objects. We can distinguish two types of sorting. IF the number of 
-objects is small enough to fit into the main memory, the sorting is called *internal sorting*. If the 
-number of objects is so large that some of them reside on external storage during the sort, it is 
-called *external sorting*. In this exploration we will cover the following sorting algorithms. 
-
-* Bucket Sort 
-* Bubble Sort 
-* Insertion Sort 
-* Selection Sort 
-* HeapSort 
-* MergeSort 
-
-
-
-
-<br><br> 
-## O(n) Algorithms
-
-
-<br>
-### Bucket Sort 
-
-Suppose we need to sort an array of positive integers {3, 11, 2, 9, 1, 5}. A bucket sort works as 
-follows: create an array of size 11. Then go through the input array and place integer 3 into a second
-array at index 3, integer 11 at index 11 and so on. We will end up with a sorted list in the second 
-array. 
-
 
 
 
