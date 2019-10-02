@@ -305,6 +305,9 @@ The **implementation of the `compare()` method** should return
 This is an example of a problem where we want to track the **K Closest Points to the Origin**, in this case we create a Max Heap so we always have access to the largest value. When the heap size exceeds K, then we want to pop the top of the PriorityQueue since that is the largest value - this allows us to always keep track of the K smallest values. 
 
 ```Java 
+// Comparator Implementation that sorts decrementing 
+
+// if a>b then the first argument b is greater than a (return 1) 
 
 Comparator<int[]> cmp = new Comparator<int[]>(){
 	public int compare(int[] b, int[] a){
@@ -319,6 +322,19 @@ Comparator<int[]> cmp = new Comparator<int[]>(){
 	
 };
 ```
+
+```Java 
+// PriorityQueue Max Heap Implementation
+PriorityQueue<int[]> heap = new PriorityQueue<int[]>(cmp); 
+for (int i=0; i<points.length; i++){
+	heap.offer(points[i]); 
+	if (heap.size() > K){
+		heap.poll(); 
+	}
+}
+// this allows us to keep a heap of size K with points which are the minimum distance to origin
+```
+
 
 
 <br><br>
